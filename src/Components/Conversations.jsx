@@ -17,7 +17,7 @@ const Conversations = () => {
           </h1>
         </div>
         <div className="flex justify-center text-white">
-          See <p className="text-blue-600"> what's new</p> in this update
+          See <p className="text-blue-600">what's new</p> in this update
         </div>
       </div>
     </>
