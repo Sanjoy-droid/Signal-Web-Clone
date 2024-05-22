@@ -2,6 +2,9 @@ import React from "react";
 import Chatlists from "./Chatlists";
 import Conversations from "./Conversations";
 
+import Navbar from "./Navbar";
+import Logout from "./Auth/Logout";
+
 const Home = () => {
   return (
     <>
@@ -15,6 +18,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Logout />
     </>
   );
 };

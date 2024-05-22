@@ -30,6 +30,7 @@ const LoginModal = () => {
       if (json.success) {
         const authToken = json.authToken;
         localStorage.setItem("token", authToken);
+        console.log(authToken);
         toast.success("Logged In Successfully");
         navigate("/");
       } else {

@@ -5,13 +5,25 @@ import {
   faPenToSquare,
   faEllipsis,
   faMagnifyingGlass,
+  // faSpinnerThird,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
+import useGetConversations from "../hooks/useGetConversations";
+import Users from "./Users";
 
 const Chatlists = () => {
+  const { loading, conversations } = useGetConversations();
+  console.log(conversations);
   return (
     <>
       <div className=" bg-gray-700 h-full">
         {/* Chats Bar */}
+        {/* Add Loading Spinner Here */}
+
+        {/* {loading ? (
+        ) : 
+       
+        null} */}
         <div className="chats-bar flex justify-around items-center space-x-6 text-white p-2">
           {/* Three Bars */}
           <div className="hover:bg-gray-600 rounded-lg h-7 w-7 flex justify-center items-center">
@@ -44,6 +56,10 @@ const Chatlists = () => {
             placeholder="Search "
           ></input>
         </div>
+        {/* Users */}
+        {conversations.map((conversation) => (
+          <Users key={conversation._id} conversation={conversation} />
+        ))}
       </div>
     </>
   );
