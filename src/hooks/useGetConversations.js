@@ -11,7 +11,7 @@ const useGetConversations = () => {
   useEffect(() => {
     const getConversations = async () => {
       if (!authToken) {
-        toast.error("No auth token found");
+        console.error("No auth token found");
         return;
       }
 

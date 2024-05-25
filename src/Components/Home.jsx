@@ -4,12 +4,13 @@ import Conversations from "./Conversations";
 
 import Navbar from "./Navbar";
 import Logout from "./Auth/Logout";
+import Chatboard from "./Chatboard";
 
 const Home = () => {
   return (
     <>
-      <div className="bg-gradient-to-r from-gray-900 to-gray-700 h-[100vh]">
-        <div className="h-full flex">
+      <div className="bg-gradient-to-r from-gray-900 to-gray-700 overflow-hidden  h-screen ">
+        <div className="flex">
           <div className="w-[32%] ">
             <Chatlists />
           </div>
@@ -18,7 +19,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Logout />
+      {/* <Logout /> */}
     </>
   );
 };

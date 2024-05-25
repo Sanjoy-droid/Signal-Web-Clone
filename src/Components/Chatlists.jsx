@@ -57,9 +57,11 @@ const Chatlists = () => {
           ></input>
         </div>
         {/* Users */}
-        {conversations.map((conversation) => (
-          <Users key={conversation._id} conversation={conversation} />
-        ))}
+        <div className="bg-gray-700 rounded-lg shadow-md overflow-y-scroll mt-2 max-h-[34rem] scrollbar scrollbar-track-[#0a1122] scrollbar-thumb-slate-700">
+          {conversations.map((conversation) => (
+            <Users key={conversation._id} conversation={conversation} />
+          ))}
+        </div>
       </div>
     </>
   );
