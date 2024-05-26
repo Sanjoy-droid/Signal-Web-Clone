@@ -1,21 +1,14 @@
-// import { create } from "zustand";
-
-// const useConversation = create((set) => ({
-//   selectedConversationId: null,
-//   setSelectedConversationId: (selectedConversationId) =>
-//     set({ selectedConversationId }),
-//   messages: [],
-//   setMessages: (messages) => set({ messages }),
-// }));
-
-// export default useConversation;
-
 import { create } from "zustand";
 
+// Zustand store for conversation state management
 const useConversation = create((set) => ({
+  selectedConversation: null, // Change to hold the full conversation object
   selectedConversationId: null,
-  setSelectedConversationId: (selectedConversationId) =>
-    set({ selectedConversationId }),
+  setSelectedConversationId: (conversation) =>
+    set({
+      selectedConversation: conversation,
+      selectedConversationId: conversation._id,
+    }),
   messages: [],
   setMessages: (messages) => set({ messages }),
 }));

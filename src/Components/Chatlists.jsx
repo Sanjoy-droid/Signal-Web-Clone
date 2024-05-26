@@ -10,10 +10,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import useGetConversations from "../hooks/useGetConversations";
 import Users from "./Users";
+import SearchComponent from "./Sidebar/SearchComponent";
 
 const Chatlists = () => {
   const { loading, conversations } = useGetConversations();
-  console.log(conversations);
+  // console.log(conversations);
   return (
     <>
       <div className=" bg-gray-700 h-full">
@@ -43,19 +44,7 @@ const Chatlists = () => {
           </div>
         </div>
 
-        {/* Search Bar */}
-        <div
-          className="search flex justify-center mx-4 h-9  rounded-lg
-          border-2 border-solid border-gray-700  selection:bg-blue-500 selection:text-white"
-        >
-          <div className="search-icon w-8 flex items-center justify-center bg-[#24252549] rounded-l-lg    text-white">
-            <FontAwesomeIcon className=" pl-3" icon={faMagnifyingGlass} />
-          </div>
-          <input
-            className="w-full  rounded-r-lg bg-[#2425256c] text-white outline-none px-2"
-            placeholder="Search "
-          ></input>
-        </div>
+        <SearchComponent />
         {/* Users */}
         <div className="bg-gray-700 rounded-lg shadow-md overflow-y-scroll mt-2 max-h-[34rem] scrollbar scrollbar-track-[#0a1122] scrollbar-thumb-slate-700">
           {conversations.map((conversation) => (

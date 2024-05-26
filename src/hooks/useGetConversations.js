@@ -18,9 +18,9 @@ const useGetConversations = () => {
       setLoading(true);
       try {
         const res = await fetch("http://localhost:5000/api/users", {
+          method: "GET",
           headers: {
             Authorization: `Bearer ${authToken}`,
-            "Content-Type": "application/json",
           },
         });
 

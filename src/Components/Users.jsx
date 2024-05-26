@@ -7,9 +7,10 @@ const Users = ({ conversation }) => {
   const isSelected = selectedConversationId === conversation._id;
   const handleClick = () => {
     if (selectedConversationId !== conversation._id) {
-      setSelectedConversationId(conversation._id);
+      setSelectedConversationId(conversation);
     }
   };
+
   return (
     <div
       className={`flex items-center p-4 hover:bg-blue-800 cursor-pointer border-b border-t border-gray-300 ${

@@ -25,9 +25,9 @@ const useSendMessage = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Include the token in the request headers
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ message }), // Corrected typo
+        body: JSON.stringify({ message }),
       });
       const data = await res.json();
       if (data.error) {
