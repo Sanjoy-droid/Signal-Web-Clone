@@ -1,38 +1,29 @@
 import { useState } from "react";
-import useConversation from "../store/useConversation";
 import toast from "react-hot-toast";
+import useConversation from "../zustand store/useConversation";
 
 const useSendMessage = () => {
   const [loading, setLoading] = useState(false);
-
-  const { messages, setMessages, selectedConversationId } = useConversation();
+  const { messages, setMessages, selectedConversation } = useConversation();
 
   const sendMessage = async (message) => {
-    if (!selectedConversationId) {
-      toast.error("No conversation selected.");
-      return;
-    }
-
     const token = localStorage.getItem("token");
-    if (!token) {
-      toast.error("No authentication token found.");
-      return;
-    }
-
     setLoading(true);
     try {
-      const res = await fetch(`/api/messages/send/${selectedConversationId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ message }),
-      });
+      const res = await fetch(
+        `/api/messages/send/${selectedConversation._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ message }),
+        }
+      );
       const data = await res.json();
-      if (data.error) {
-        throw new Error(data.error);
-      }
+      if (data.error) throw new Error(data.error);
+
       setMessages([...messages, data]);
     } catch (error) {
       toast.error(error.message);
@@ -43,5 +34,4 @@ const useSendMessage = () => {
 
   return { sendMessage, loading };
 };
-
 export default useSendMessage;

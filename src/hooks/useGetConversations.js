@@ -10,10 +10,10 @@ const useGetConversations = () => {
 
   useEffect(() => {
     const getConversations = async () => {
-      if (!authToken) {
-        console.error("No auth token found");
-        return;
-      }
+      // if (!authToken) {
+      //   console.error("No auth token found");
+      //   return;
+      // }
 
       setLoading(true);
       try {
@@ -42,7 +42,7 @@ const useGetConversations = () => {
     };
 
     getConversations();
-  }, [authToken]);
+  }, []);
 
   return { loading, conversations };
 };

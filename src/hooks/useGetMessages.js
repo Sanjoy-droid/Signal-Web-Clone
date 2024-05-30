@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from "react";
-import useConversation from "../store/useConversation";
+import useConversation from "../zustand store/useConversation";
 import toast from "react-hot-toast";
 
 const useGetMessages = () => {
   const [loading, setLoading] = useState(false);
-  const { selectedConversationId, setMessages } = useConversation();
+  const { messages, setMessages, selectedConversation } = useConversation();
 
   useEffect(() => {
     const getMessages = async () => {
-      if (!selectedConversationId) return; // Ensure we have a conversation ID
-
-      const token = localStorage.getItem("token");
-      if (!token) {
-        toast.error("No authentication token found.");
-        return;
-      }
       setLoading(true);
       try {
-        const res = await fetch(`/api/messages/${selectedConversationId}`, {
+        const res = await fetch(`/api/messages/${selectedConversation._id}`, {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         const data = await res.json();
@@ -33,10 +27,9 @@ const useGetMessages = () => {
       }
     };
 
-    getMessages();
-  }, [selectedConversationId, setMessages]);
+    if (selectedConversation?._id) getMessages();
+  }, [selectedConversation?._id, setMessages]);
 
-  return { loading };
+  return { messages, loading };
 };
-
 export default useGetMessages;

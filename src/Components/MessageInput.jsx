@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import useSendMessage from "../hooks/useSendMessage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");
@@ -8,10 +10,8 @@ const MessageInput = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!message) return;
-    if (message.trim()) {
-      await sendMessage(message);
-      setMessage("");
-    }
+    await sendMessage(message);
+    setMessage("");
   };
 
   return (
@@ -27,9 +27,9 @@ const MessageInput = () => {
       <button
         type="submit"
         className="bg-blue-500 text-white p-2 rounded-r-lg"
-        disabled={loading}
+        // disabled={loading}
       >
-        Send
+        <FontAwesomeIcon icon={faPaperPlane} />
       </button>
     </form>
   );

@@ -4,6 +4,7 @@ import {
   faBars,
   faPenToSquare,
   faEllipsis,
+  faRightFromBracket,
   faMagnifyingGlass,
   // faSpinnerThird,
   faSpinner,
@@ -11,10 +12,21 @@ import {
 import useGetConversations from "../hooks/useGetConversations";
 import Users from "./Users";
 import SearchComponent from "./Sidebar/SearchComponent";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Chatlists = () => {
+  let navigate = useNavigate();
+
   const { loading, conversations } = useGetConversations();
   // console.log(conversations);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    toast.success("Logged Out Successfully");
+    navigate("/login");
+  };
+
   return (
     <>
       <div className=" bg-gray-700 h-full">
@@ -34,8 +46,11 @@ const Chatlists = () => {
           {/*Chats  */}
           <div className="font-semibold text-lg">Chats</div>
           {/* Edit */}
-          <div className="hover:bg-gray-600 rounded-lg h-7 w-7 flex justify-center items-center ">
-            <FontAwesomeIcon icon={faPenToSquare} />
+          <div
+            className="hover:bg-gray-600 rounded-lg h-7 w-7 flex justify-center items-center "
+            onClick={handleLogout}
+          >
+            <FontAwesomeIcon icon={faRightFromBracket} />
           </div>
           {/* Three dots */}
           <div className="hover:bg-gray-600 rounded-lg h-7 w-7 flex justify-center items-center">
