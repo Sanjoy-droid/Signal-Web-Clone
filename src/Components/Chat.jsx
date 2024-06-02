@@ -1,26 +1,30 @@
-import React, { useEffect } from "react";
-import { jwtDecode } from "jwt-decode";
+import React, { useEffect, useRef } from "react";
 
-import useConversation from "../zustand store/useConversation";
 import useGetMessages from "../hooks/useGetMessages";
-import useListenMessages from "../hooks/useListenMessages";
 import Message from "./Message";
 
 const Chat = () => {
-  const { selectedConversation } = useConversation();
-
-  const authToken = localStorage.getItem("token");
-  const decodedToken = jwtDecode(authToken);
-  const userId = decodedToken._id;
-
   const { messages, loading } = useGetMessages();
 
-  // useListenMessages();
+  const lastMessage = useRef();
+  useEffect(() => {
+    setTimeout(() => {
+      lastMessage.current?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }, 10);
+  }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-scroll mb-4">
-      {authToken &&
-        messages.map((msg, index) => <Message key={index} message={msg} />)}
+    <div
+      className="
+bg-gray-900 rounded-sm shadow-md overflow-y-scroll scrollbar-track-[#0a1122] scrollbar-thumb-slate-700 scrollbar-thin flex-auto  "
+    >
+      {messages.map((msg, index) => (
+        <div ref={lastMessage} key={index}>
+          <Message message={msg} />
+        </div>
+      ))}
     </div>
   );
 };

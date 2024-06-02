@@ -26,7 +26,6 @@ const LoginModal = () => {
     });
     if (response.ok) {
       const json = await response.json();
-      console.log("Server Response: ", json); // log response
       if (json.success) {
         const authToken = json.authToken;
         localStorage.setItem("token", authToken);

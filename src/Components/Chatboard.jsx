@@ -16,8 +16,8 @@ const Chatboard = () => {
   return !selectedConversation ? (
     <SelectUserPrompt />
   ) : (
-    <div className="flex flex-col h-[38rem] p-4 bg-gray-800 ">
-      <div className="text-gray-300 mb-4">
+    <div className="flex flex-col  pt-2 bg-gray-800 h-screen ">
+      <div className="text-gray-300 font-semibold mb-4 ml-4 text-lg">
         {`To: ${selectedConversation.name}`}
       </div>
       <Chat />

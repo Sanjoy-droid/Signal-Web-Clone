@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const SearchComponent = () => {
   const [search, setSearch] = useState("");
-  const { setSelectedConversationId } = useConversation(); // Corrected the typo
+  const { setSelectedConversation } = useConversation(); // Corrected the typo
   const { conversations } = useGetConversations();
 
   const handleSubmit = (e) => {
@@ -20,7 +20,7 @@ const SearchComponent = () => {
       (c) => c.name.toLowerCase().includes(search.toLowerCase()) // Added return statement
     );
     if (conversation) {
-      setSelectedConversationId(conversation._id); // Use _id to set the selected conversation
+      setSelectedConversation(conversation._id); // Use _id to set the selected conversation
       setSearch("");
     } else {
       toast.error("No User Found!!!");
