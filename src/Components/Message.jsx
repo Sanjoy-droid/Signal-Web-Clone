@@ -5,7 +5,6 @@ import useListenMessages from "../hooks/useListenMessages";
 import formatTimestamp from "../utils/formatTimestamp";
 
 const Message = ({ message }) => {
-  const { selectedConversation } = useConversation();
   useListenMessages();
 
   const authToken = localStorage.getItem("token");

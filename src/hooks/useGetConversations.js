@@ -25,7 +25,7 @@ const useGetConversations = () => {
         });
 
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Please Log In with Valid Credentials");
         }
 
         const data = await res.json();
