@@ -6,7 +6,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
 
 const LoginModal = () => {
-  const host = import.meta.env.VITE_URL;
+  const VITE_URL = import.meta.env.VITE_URL || "http://localhost:5000";
 
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let navigate = useNavigate();
@@ -14,7 +14,7 @@ const LoginModal = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`${host}/api/auth/login`, {
+    const response = await fetch(`${VITE_URL}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

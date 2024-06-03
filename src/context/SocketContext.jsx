@@ -28,9 +28,9 @@ export const SocketContextProvider = ({ children }) => {
         setOnlineUsers(users);
       });
 
-      socket.on("newMessage", (message) => {
-        console.log("New message received:", message);
-      });
+      // socket.on("newMessage", (message) => {
+      //   console.log("New message received:", message);
+      // });
 
       return () => socket.close();
     } else {

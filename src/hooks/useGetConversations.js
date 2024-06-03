@@ -5,7 +5,7 @@ const useGetConversations = () => {
   const [loading, setLoading] = useState(false);
   const [conversations, setConversations] = useState([]);
 
-  const VITE_URL = import.meta.env.VITE_URL;
+  const VITE_URL = import.meta.env.VITE_URL || "http://localhost:5000";
   // Retrieve authToken from local storage
   const authToken = localStorage.getItem("token");
 
