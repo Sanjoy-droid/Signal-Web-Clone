@@ -5,6 +5,7 @@ const useGetConversations = () => {
   const [loading, setLoading] = useState(false);
   const [conversations, setConversations] = useState([]);
 
+  const VITE_URL = import.meta.env.VITE_URL;
   // Retrieve authToken from local storage
   const authToken = localStorage.getItem("token");
 
@@ -17,7 +18,7 @@ const useGetConversations = () => {
 
       setLoading(true);
       try {
-        const res = await fetch("http://localhost:5000/api/users", {
+        const res = await fetch(`${VITE_URL}/api/users`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${authToken}`,

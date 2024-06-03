@@ -5,11 +5,6 @@ import { useSocketContext } from "../context/SocketContext";
 const Users = ({ conversation }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
   const isSelected = selectedConversation?._id === conversation._id;
-  // const handleClick = () => {
-  //   if (selectedConversationId !== conversation._id) {
-  //     setSelectedConversationId(conversation);
-  //   }
-  // };
 
   const { onlineUsers } = useSocketContext();
   const isOnline = onlineUsers.includes(conversation._id);
